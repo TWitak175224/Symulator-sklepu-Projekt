@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Symulator_sklepu {  
-    internal class List
+namespace Symulator_sklepu {
+    public class List
     {
-        public NodeL head;
-        public NodeL tail;
+        public NodeL? head;
+        public NodeL? tail;
         public uint count;
         private bool sortedAlph = false;
         private bool sortedPrice = false;
 
-
-        public void AddFirst(string nazwa,double cena, int liczba)
+        public List()
         {
-            var nowy = new NodeL(nazwa,(int)(cena*100),liczba);
+            this.head = null;
+            this.tail = null;
+            this.count = 0;
+            this.sortedAlph = false;
+            this.sortedPrice = false;
+
+        }
+        public void AddFirst(string nazwa, double cena, int liczba)
+        {
+            var nowy = new NodeL(nazwa, (int)(cena), liczba);
             nowy.next = this.head;
             if (this.count > 0)
             {
@@ -31,9 +40,9 @@ namespace Symulator_sklepu {
 
             count++;
         }
-        public void AddLast(string nazwa, double cena,int liczba)
+        public void AddLast(string nazwa, double cena, int liczba)
         {
-            var nowy = new NodeL(nazwa, (int)(cena * 100), liczba);
+            var nowy = new NodeL(nazwa, (int)(cena), liczba);
             nowy.prev = this.tail;
             if (this.count > 0)
             {
@@ -78,93 +87,98 @@ namespace Symulator_sklepu {
             }
 
         }
-        
 
 
-        
+
+
 
         public NodeL InsertionSortAlf()
         {
             if (this.head == null) return this.head;
-
-            NodeL sorted = null;
-            NodeL curr = head;
-
-            // Traverse the list to sort each element
-            while (curr != null)
+            if (sortedAlph == false)
             {
+                NodeL sorted = null;
+                NodeL curr = head;
 
-                // Store the next node to process
-                NodeL next = curr.next;
+                this.sortedPrice = false;
 
-                // Insert `curr` into the sorted part
-                if (sorted == null || sorted.nazwa.CompareTo(curr.nazwa) >=0)
+                while (curr != null)
                 {
-                    curr.next = sorted;
-                    if (sorted != null)
+
+
+                    NodeL next = curr.next;
+
+
+                    if (sorted == null || sorted.nazwa.CompareTo(curr.nazwa) >= 0)
                     {
-                        sorted.prev = curr;
+                        curr.next = sorted;
+                        if (sorted != null)
+                        {
+                            sorted.prev = curr;
+                        }
+
+
+                        sorted = curr;
+                    }
+                    else
+                    {
+
+
+                        NodeL currentSorted = sorted;
+
+
+                        while (currentSorted.next != null &&
+                               currentSorted.next.nazwa.CompareTo(curr.nazwa) < 0)
+                        {
+                            currentSorted = currentSorted.next;
+                        }
+
+
+                        curr.next = currentSorted.next;
+                        currentSorted.next = curr;
+                        currentSorted.prev = curr.prev;
+                        curr.prev = currentSorted;
                     }
 
-                    // Update sorted to the new head
-                    sorted = curr;
+                    curr = next;
                 }
-                else
+
+                this.head = sorted;
+                NodeL checker = head;
+
+                for (int i = 0; i < this.count; i++)
                 {
 
-                    // Pointer to traverse the sorted part
-                    NodeL currentSorted = sorted;
-
-                    // Find the correct position to insert
-                    while (currentSorted.next != null &&
-                           currentSorted.next.nazwa.CompareTo(curr.nazwa)<0)
+                    if (checker.next == null)
                     {
-                        currentSorted = currentSorted.next;
+                        this.tail = checker;
                     }
-
-                    // Insert `curr` after `currentSorted`
-                    curr.next = currentSorted.next;
-                    currentSorted.next = curr;
-                    currentSorted.prev = curr.prev;
-                    curr.prev = currentSorted;
+                    else
+                    {
+                        checker = checker.next;
+                    }
                 }
-                
-                curr = next;
+                this.sortedAlph = true;
+                return sorted;
             }
-            
-            this.head = sorted;
-            NodeL checker = head;
-            
-            for (int i = 0; i < this.count; i++)
-            {
-                
-                if (checker.next == null)
-                {
-                    this.tail = checker;
-                }
-                else
-                {
-                    checker = checker.next;
-                }
-            }
-            return sorted;
+            return this.head;
         }
         public NodeL InsertionSortPrice()
         {
             if (this.head == null) return this.head;
-
+            if (sortedPrice == false) { 
             NodeL sorted = null;
             NodeL curr = head;
+            this.sortedAlph = false;
 
-            // Traverse the list to sort each element
             while (curr != null)
             {
 
-                // Store the next node to process
+
                 NodeL next = curr.next;
 
-                // Insert `curr` into the sorted part
-                if (sorted == null || sorted.cena_w_gr>=curr.cena_w_gr)
+
+                if (sorted == null || sorted.cena_w_gr >= curr.cena_w_gr)
                 {
                     curr.next = sorted;
                     if (sorted != null)
@@ -172,31 +186,31 @@ namespace Symulator_sklepu {
                         sorted.prev = curr;
                     }
 
-                    // Update sorted to the new head
+
                     sorted = curr;
                 }
                 else
                 {
 
-                    // Pointer to traverse the sorted part
+
                     NodeL currentSorted = sorted;
 
-                    // Find the correct position to insert
+
                     while (currentSorted.next != null &&
                            currentSorted.next.cena_w_gr < curr.cena_w_gr)
                     {
                         currentSorted = currentSorted.next;
                     }
 
-                    // Insert `curr` after `currentSorted`
+
                     curr.next = currentSorted.next;
                     currentSorted.next = curr;
                     currentSorted.prev = curr.prev;
                     curr.prev = currentSorted;
                 }
-                
+
                 curr = next;
-                
+
             }
             this.head = sorted;
             NodeL checker = head;
@@ -213,8 +227,13 @@ namespace Symulator_sklepu {
                     checker = checker.next;
                 }
             }
+            this.sortedPrice = true;
             return sorted;
         }
+        return this.head;
+    }
+    
+        
 
         public string ToStringi()
         {
@@ -227,19 +246,29 @@ namespace Symulator_sklepu {
             }
             return stringowana;
         }
-        public void OdwrocKol() { 
-            NodeL poczatek = this.head;
-            NodeL koniec = this.tail;
-            NodeL edytowany = this.tail;
-            for (int i = 0; i < this.count; i++) {
-                NodeL temp = edytowany.prev;
-                edytowany.prev = edytowany.next;
-                edytowany.next = temp;
-                edytowany = edytowany.next;
+        //public void OdwrocKol() { 
+        //    NodeL poczatek = this.head;
+        //    NodeL koniec = this.tail;
+        //    NodeL edytowany = koniec;
+        //    for (int i = 0; i < this.count; i++) {
+        //        if (edytowany == null)
+        //        {
+        //            break;
+        //        }
+        //        if (edytowany.next == null)
+        //        {
+        //            break;
+        //        }
+        //        NodeL temp = edytowany.prev;
+        //        edytowany.prev = edytowany.next;
+        //        edytowany.next = temp;
+                
+        //        edytowany = edytowany.next;
             
-            }
-            this.tail = poczatek;
-            this.head = koniec;
-        }
+        //    }
+        //    this.tail = poczatek;
+        //    this.head = koniec;
+        //}
+        // To be fixed later
     }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProductModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProductModel>
+    <Name>y</Name>
+    <Description />
+    <Price>8000</Price>
+    <numOfProd>3</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>y</Name>
+    <Description />
+    <Price>8000</Price>
+    <numOfProd>3</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>y</Name>
+    <Description />
+    <Price>8000</Price>
+    <numOfProd>3</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>y</Name>
+    <Description />
+    <Price>8000</Price>
+    <numOfProd>3</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>y</Name>
+    <Description />
+    <Price>8000</Price>
+    <numOfProd>3</numOfProd>
+  </ProductModel>
+</ArrayOfProductModel>
