@@ -28,8 +28,8 @@ namespace Symulator_sklepu
             InitializeComponent();
             instance = this;
             //czytanie();
-            String[] nazwy = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k" };
-            int[] ceny = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            String[] nazwy = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
+            int[] ceny = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
             for (int i = 0; i < nazwy.Length; i++)
             {
                 arty.AddLast(nazwy[i], ceny[i], 21);
@@ -218,9 +218,23 @@ namespace Symulator_sklepu
 
         private void button4_Click(object sender, EventArgs e)
         {
-
-            pierwszyCzytany = pierwszyCzytany.next.next.next.next.next;
-            if (pierwszyCzytany.next == null) {
+            try
+            {
+                pierwszyCzytany = pierwszyCzytany.next.next.next.next.next;
+            }
+            catch (System.NullReferenceException)
+            {
+                button4.Visible = false;
+                button4.Enabled = false;
+                pierwszyCzytany = arty.tail;
+            }
+            if (pierwszyCzytany == null)
+            {
+                button4.Visible = false;
+                button4.Enabled = false;
+                pierwszyCzytany = arty.tail;
+                return;
+            }else if (pierwszyCzytany.next == null) {
                 button4.Visible = false;
                 button4.Enabled = false;
 
@@ -233,18 +247,31 @@ namespace Symulator_sklepu
 
         private void button5_Click(object sender, EventArgs e)
         {
-
-            pierwszyCzytany = pierwszyCzytany.prev.prev.prev.prev.prev;
-            if (pierwszyCzytany.prev == null)
+            try
+            {
+                pierwszyCzytany = pierwszyCzytany.prev.prev.prev.prev.prev;
+            }
+            catch (System.NullReferenceException)
+            {
+                pierwszyCzytany = arty.head;
+            }
+            if (pierwszyCzytany == null)
             {
                 button5.Visible = false;
                 button5.Enabled = false;
+                pierwszyCzytany = arty.head;
+                return;
             }
-            else
+            else if(pierwszyCzytany.prev == null)
             {
-                button4.Visible = true;
+                MessageBox.Show("false");
+                button5.Visible = false;
+                button5.Enabled = false;
+            } 
+            MessageBox.Show("trru");
+            button4.Visible = true;
                 button4.Enabled = true;
-            }
+            
             ZmianaText();
         }
     }
