@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Symulator_sklepu {
+namespace Symulator_sklepu
+{
     public class List
     {
         public NodeL? head;
@@ -104,6 +105,7 @@ namespace Symulator_sklepu {
         public NodeL InsertionSortAlf()
         {
             if (this.head == null) return this.head;
+
             if (sortedAlph == false)
             {
                 NodeL sorted = null;
@@ -113,11 +115,9 @@ namespace Symulator_sklepu {
 
                 while (curr != null)
                 {
-
-
                     NodeL next = curr.next;
 
-
+                    
                     if (sorted == null || sorted.nazwa.CompareTo(curr.nazwa) >= 0)
                     {
                         curr.next = sorted;
@@ -125,16 +125,13 @@ namespace Symulator_sklepu {
                         {
                             sorted.prev = curr;
                         }
-
-
                         sorted = curr;
+                        sorted.prev = null; 
                     }
                     else
                     {
-
-
+                        
                         NodeL currentSorted = sorted;
-
 
                         while (currentSorted.next != null &&
                                currentSorted.next.nazwa.CompareTo(curr.nazwa) < 0)
@@ -142,107 +139,98 @@ namespace Symulator_sklepu {
                             currentSorted = currentSorted.next;
                         }
 
-
+                        
                         curr.next = currentSorted.next;
+                        if (currentSorted.next != null)
+                        {
+                            currentSorted.next.prev = curr;
+                        }
                         currentSorted.next = curr;
-                        currentSorted.prev = curr.prev;
                         curr.prev = currentSorted;
                     }
 
                     curr = next;
                 }
 
+                
                 this.head = sorted;
                 NodeL checker = head;
 
-                for (int i = 0; i < this.count; i++)
+                while (checker.next != null)
                 {
-
-                    if (checker.next == null)
-                    {
-                        this.tail = checker;
-                    }
-                    else
-                    {
-                        checker = checker.next;
-                    }
+                    checker = checker.next;
                 }
+
+                this.tail = checker;
                 this.sortedAlph = true;
-                return sorted;
+                return this.head;
             }
+
             return this.head;
         }
         public NodeL InsertionSortPrice()
         {
-            if (this.head == null) return this.head;
-            if (sortedPrice == false) { 
-            NodeL sorted = null;
-            NodeL curr = head;
-            this.sortedAlph = false;
+            if (this.head == null || this.head.next == null)
+                return this.head;
 
-            while (curr != null)
+            if (!this.sortedPrice)
             {
+                NodeL sorted = null;
+                NodeL curr = this.head;
 
+                this.sortedAlph = false;
 
-                NodeL next = curr.next;
-
-
-                if (sorted == null || sorted.cena_w_gr >= curr.cena_w_gr)
+                while (curr != null)
                 {
-                    curr.next = sorted;
-                    if (sorted != null)
+                    NodeL next = curr.next;
+
+                    if (sorted == null || sorted.cena_w_gr >= curr.cena_w_gr)
                     {
-                        sorted.prev = curr;
+
+                        curr.next = sorted;
+                        if (sorted != null)
+                            sorted.prev = curr;
+
+                        sorted = curr;
+                        sorted.prev = null;
+                    }
+                    else
+                    {
+
+                        NodeL temp = sorted;
+                        while (temp.next != null && temp.next.cena_w_gr < curr.cena_w_gr)
+                        {
+                            temp = temp.next;
+                        }
+
+
+                        curr.next = temp.next;
+                        if (temp.next != null)
+                            temp.next.prev = curr;
+
+                        temp.next = curr;
+                        curr.prev = temp;
                     }
 
-
-                    sorted = curr;
+                    curr = next;
                 }
-                else
+
+
+                this.head = sorted;
+                NodeL tempTail = sorted;
+                while (tempTail.next != null)
                 {
-
-
-                    NodeL currentSorted = sorted;
-
-
-                    while (currentSorted.next != null &&
-                           currentSorted.next.cena_w_gr < curr.cena_w_gr)
-                    {
-                        currentSorted = currentSorted.next;
-                    }
-
-
-                    curr.next = currentSorted.next;
-                    currentSorted.next = curr;
-                    currentSorted.prev = curr.prev;
-                    curr.prev = currentSorted;
+                    tempTail = tempTail.next;
                 }
+                this.tail = tempTail;
 
-                curr = next;
-
+                this.sortedPrice = true;
             }
-            this.head = sorted;
-            NodeL checker = head;
 
-            for (int i = 0; i < this.count; i++)
-            {
-
-                if (checker.next == null)
-                {
-                    this.tail = checker;
-                }
-                else
-                {
-                    checker = checker.next;
-                }
-            }
-            this.sortedPrice = true;
-            return sorted;
+            return this.head;
         }
-        return this.head;
-    }
-    
-        
+
+
 
         public string ToStringi()
         {
@@ -250,7 +238,7 @@ namespace Symulator_sklepu {
             NodeL node = this.head;
             for (int i = 0; i < this.count; i++)
             {
-                stringowana += node.nazwa+" "+(double)(node.cena_w_gr/100)+"zł "+node.ilosc + "\n";
+                stringowana += node.nazwa + " " + (double)(node.cena_w_gr / 100) + "zł " + node.ilosc + "\n";
                 node = node.next;
             }
             return stringowana;
@@ -271,9 +259,9 @@ namespace Symulator_sklepu {
         //        NodeL temp = edytowany.prev;
         //        edytowany.prev = edytowany.next;
         //        edytowany.next = temp;
-                
+
         //        edytowany = edytowany.next;
-            
+
         //    }
         //    this.tail = poczatek;
         //    this.head = koniec;

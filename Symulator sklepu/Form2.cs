@@ -45,7 +45,7 @@ namespace Symulator_sklepu
                 System.Windows.Forms.Label[] labelki_nazw = { nazwa1, nazwa2, nazwa3, nazwa4, nazwa5 };
                 System.Windows.Forms.Label[] labelki_cen = { cena1, cena2, cena3, cena4, cena5 };
                 System.Windows.Forms.Label[] labelki_ilosci = { ilosc1, ilosc2, ilosc3, ilosc4, ilosc5 };
-                Button[] przyciskiZMin = {  pierwszyMinus, drugiMinus, trzeciMinus, czwartyMinus,piatyMinus };
+                Button[] przyciskiZMin = { pierwszyMinus, drugiMinus, trzeciMinus, czwartyMinus, piatyMinus };
                 Button[] przyciskiZPl = { pierwszyPlus, drugiPlus, trzeciPlus, czwartyPlus, piatyPlus };
                 NodeL czytany = pierwszyCzytany;
                 int i = 0;
@@ -68,13 +68,13 @@ namespace Symulator_sklepu
                         labelki_cen[i].Text = czytany.PrintCena();
                         labelki_ilosci[i].Text = czytany.ilosc.ToString();
                         przyciskiZMin[i].Visible = true;
-                        przyciskiZPl[i].Visible=true;
+                        przyciskiZPl[i].Visible = true;
                         czytany = czytany.next;
                     }
                 }
 
 
-                
+
 
             }
         }

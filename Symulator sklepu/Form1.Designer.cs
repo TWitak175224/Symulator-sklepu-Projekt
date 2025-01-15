@@ -77,7 +77,7 @@
             button2.ForeColor = SystemColors.ControlLight;
             button2.Location = new Point(367, 95);
             button2.Name = "button2";
-            button2.Size = new Size(38, 23);
+            button2.Size = new Size(48, 23);
             button2.TabIndex = 1;
             button2.Text = "1-10";
             button2.UseVisualStyleBackColor = false;

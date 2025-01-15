@@ -50,14 +50,14 @@ namespace Symulator_sklepu
             for (int i = 0; i < arty.count; i++)
             {
 
-                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr/100, produkt.ilosc);
+                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr / 100, produkt.ilosc);
                 produkt = produkt.next;
             }
             using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuly.xml", FileMode.Create, FileAccess.Write))
             {
                 serializer.Serialize(fs, tablica);
 
-                
+
             }
             serializer = new XmlSerializer(typeof(String));
             using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Create, FileAccess.Write))
@@ -99,7 +99,7 @@ namespace Symulator_sklepu
             }
         }
 
-       
+
         private void ZmianaText()
         {
             {
@@ -148,6 +148,8 @@ namespace Symulator_sklepu
                 button1.Text = "A-Z";
                 button4.Visible = true;
                 button4.Enabled = true;
+                button5.Visible = false;
+                button5.Enabled = false;
 
             }
 
@@ -167,6 +169,8 @@ namespace Symulator_sklepu
                 button2.Text = "1-10";
                 button4.Visible = true;
                 button4.Enabled = true;
+                button5.Visible = false;
+                button5.Enabled = false;
             }
 
 
@@ -189,11 +193,13 @@ namespace Symulator_sklepu
         private void button4_Click(object sender, EventArgs e)
         {
             try
-            {  
-                for (int i = 0; i < 5; i++) {
-                    pierwszyCzytany = pierwszyCzytany.next; }
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    pierwszyCzytany = pierwszyCzytany.next;
+                }
             }
-            catch (System.NullReferenceException )
+            catch (System.NullReferenceException)
             {
                 button4.Visible = false;
                 button4.Enabled = false;
@@ -230,6 +236,7 @@ namespace Symulator_sklepu
                 button5.Enabled = false;
                 pierwszyCzytany = arty.head;
             }
+
             if (pierwszyCzytany == null)
             {
                 button5.Visible = false;
@@ -237,10 +244,11 @@ namespace Symulator_sklepu
                 pierwszyCzytany = arty.head;
                 return;
             }
-            else if (pierwszyCzytany==arty.head||pierwszyCzytany.prev == null|| pierwszyCzytany.prev.prev == null || pierwszyCzytany.prev.prev.prev == null || pierwszyCzytany.prev.prev.prev.prev == null)
+            else if (pierwszyCzytany == arty.head || pierwszyCzytany.prev == null || pierwszyCzytany.prev.next == null || pierwszyCzytany.prev.prev.prev == null || pierwszyCzytany.prev.prev.prev.prev == null)
             {
                 button5.Visible = false;
                 button5.Enabled = false;
+                pierwszyCzytany = arty.head;
             }
 
             button4.Visible = true;
@@ -311,6 +319,6 @@ namespace Symulator_sklepu
 
         }
 
-        
+
     }
 }
