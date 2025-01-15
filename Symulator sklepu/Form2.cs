@@ -14,7 +14,7 @@ namespace Symulator_sklepu
     public partial class Form2 : Form
     {
         public List arty = new List();
-
+        private NodeL pierwszyCzytany = new NodeL();
         int alfab = 0, cen = 0;
         public Form2()
         {
@@ -22,10 +22,7 @@ namespace Symulator_sklepu
             czytanie();
 
 
-            for (int i = 0; i < 5; i++)
-            {
-                //arty.AddFirst(nazwy[i], ceny[i], 3);
-            }
+            pierwszyCzytany = arty.head;
 
 
         }

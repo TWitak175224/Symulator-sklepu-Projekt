@@ -14,9 +14,9 @@ namespace Symulator_sklepu
         public int ilosc { get; set; }
         public string nazwa { get; set; }
         public int cena_w_gr { get; set; }
-        public NodeL(string nazwa,int cena,int liczba)
+        public NodeL(string nazwa,double cena,int liczba)
         {
-            this.cena_w_gr = cena;
+            this.cena_w_gr = (int)cena*100;
             this.nazwa = nazwa;
             this.ilosc = liczba;
         }
@@ -30,7 +30,7 @@ namespace Symulator_sklepu
 
         public String PrintCena()
         {
-            return ((Double)(cena_w_gr/100)).ToString();
+            return ((double)(cena_w_gr/100)).ToString();
         }
         
     }

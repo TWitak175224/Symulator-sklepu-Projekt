@@ -8,11 +8,33 @@ namespace Symulator_sklepu
     {
         public List arty = new List();
 
+        private NodeL pierwszyCzytany = new NodeL();
         int alfab = 0, cen = 0;
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
             zamykanie();
+        }
+        public Form1()
+        {
+            InitializeComponent();
+            //czytanie();
+            String[] nazwy = { "a", "b", "c", "d", "e","f","g","h","i","j","k" };
+            int[] ceny = { 10,9,8,7,6,5, 4, 3, 2, 1,0 };
+            for (int i = 0; i < nazwy.Length; i++)
+            {
+                arty.AddLast(nazwy[i], ceny[i], 21);
+            }
+            pierwszyCzytany = arty.head;
+
+            ZmianaText();
+        }
+        private int SprawdzIleDoWyswietlenia()
+        {
+            NodeL p = this.pierwszyCzytany;
+            int i = 0;
+            for (; i < 5 && p != null; i++) { }
+            return i;
         }
         private void zamykanie()
         {
@@ -70,37 +92,33 @@ namespace Symulator_sklepu
                 this.arty.AddFirst(tablica[j].Name, tablica[j].Price, tablica[j].numOfProd);
             }
         }
-        public Form1()
-        {
-            InitializeComponent();
-            czytanie();
-            String[] nazwy = { "a", "b", "x", "z", "y" };
-            int[] ceny = { 100, 23, 15, 234, 80 };
 
-
-            for (int i = 0; i < 5; i++)
-            {
-                //arty.AddFirst(nazwy[i], ceny[i], 3);
-            }
-
-            ZmianaText();
-        }
 
         private void ZmianaText()
         {
             {
-                nazwa1.Text = arty.head.nazwa;
-                nazwa2.Text = arty.head.next.nazwa;
-                nazwa3.Text = arty.head.next.next.nazwa;
-                nazwa4.Text = arty.head.next.next.next.nazwa;
+                Label[] labelki_nazw = { nazwa1, nazwa2, nazwa3, nazwa4, nazwa5 };
+                Label[] labelki_cen = { cena1, cena2, cena3, cena4, cena5 };
+                NodeL czytany = pierwszyCzytany;
+                for (int i = 0; i < SprawdzIleDoWyswietlenia(); i++)
+                {
+
+                    if (czytany == null)
+                    {
+                        labelki_cen[i].Text = null;
+                        labelki_nazw[i].Text = null;
+                        button3.Visible = false;
+                        button3.Enabled = false;
+                        
+                    }
+                    else
+                    {
+                        labelki_nazw[i].Text = czytany.nazwa;
+                        labelki_cen[i].Text = czytany.PrintCena();
+                        czytany = czytany.next;
+                    }
 
             }
-
-            {
-                cena1.Text = arty.head.PrintCena();
-                cena2.Text = arty.head.next.PrintCena();
-                cena3.Text = arty.head.next.next.PrintCena();
-                cena4.Text = arty.head.next.next.next.PrintCena();
             }
         }
 
@@ -110,6 +128,7 @@ namespace Symulator_sklepu
             {
                 cen = 0;
                 arty.InsertionSortAlf();
+                pierwszyCzytany = this.arty.head;
                 alfab = 1;
                 ZmianaText();
                 button1.Text = "A-Z";
@@ -126,6 +145,7 @@ namespace Symulator_sklepu
             {
                 alfab = 0;
                 arty.InsertionSortPrice();
+                pierwszyCzytany = this.arty.head;
                 cen = 1;
                 ZmianaText();
 
@@ -140,6 +160,15 @@ namespace Symulator_sklepu
         {
             Form2 f2 = new Form2();
             f2.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (button3.Enabled == true)
+            {
+                pierwszyCzytany = pierwszyCzytany.next.next.next.next.next;
+                ZmianaText();
+            }
         }
     }
 }
