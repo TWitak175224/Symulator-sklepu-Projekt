@@ -27,13 +27,8 @@ namespace Symulator_sklepu
         {
             InitializeComponent();
             instance = this;
-            //czytanie();
-            String[] nazwy = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k" };
-            int[] ceny = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,0 };
-            for (int i = 0; i < nazwy.Length; i++)
-            {
-                arty.AddLast(nazwy[i], ceny[i], 21);
-            }
+            czytanie();
+
             pierwszyCzytany = arty.head;
             button5.Visible = false;
             button5.Enabled = false;
@@ -55,14 +50,14 @@ namespace Symulator_sklepu
             for (int i = 0; i < arty.count; i++)
             {
 
-                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr, produkt.ilosc);
+                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr/100, produkt.ilosc);
                 produkt = produkt.next;
             }
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artyku³y.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuly.xml", FileMode.Create, FileAccess.Write))
             {
                 serializer.Serialize(fs, tablica);
 
-                MessageBox.Show("Created");
+                
             }
             serializer = new XmlSerializer(typeof(String));
             using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Create, FileAccess.Write))
@@ -94,7 +89,7 @@ namespace Symulator_sklepu
             }
             ProductModel[]? tablica = new ProductModel[i];
             serializer = new XmlSerializer(typeof(ProductModel[]));
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artyku³y.xml", FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuly.xml", FileMode.Open, FileAccess.Read))
             {
                 tablica = serializer.Deserialize(fs) as ProductModel[];
             }
@@ -104,38 +99,7 @@ namespace Symulator_sklepu
             }
         }
 
-        public void czytanie_dodanych()
-        {
-            String? ile = "";
-            uint i = 0;
-            XmlSerializer serializer = new XmlSerializer(typeof(String));
-            try
-            {
-                using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Open, FileAccess.Read))
-                {
-                    ile = serializer.Deserialize(fs) as String;
-                    if (ile != null)
-                    {
-                        i = uint.Parse(ile);
-                    }
-
-                }
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                return;
-            }
-            ProductModel[]? tablica = new ProductModel[i];
-            serializer = new XmlSerializer(typeof(ProductModel[]));
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artyku³y_dodane.xml", FileMode.Open, FileAccess.Read))
-            {
-                tablica = serializer.Deserialize(fs) as ProductModel[];
-            }
-            for (uint j = 0; j < i; j++)
-            {
-                this.arty.AddFirst(tablica[j].Name, tablica[j].Price, tablica[j].numOfProd);
-            }
-        }
+       
         private void ZmianaText()
         {
             {
@@ -167,15 +131,10 @@ namespace Symulator_sklepu
                     }
                 }
 
-                
-                //for (; i < check; i++)
-                //{
-
-                //}
 
             }
         }
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -215,7 +174,6 @@ namespace Symulator_sklepu
 
         private void button3_Click(object sender, EventArgs e)
         {
-            zamykanie();
             Form2 f2 = new Form2();
             f2.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
             f2.Show();
@@ -223,17 +181,19 @@ namespace Symulator_sklepu
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            arty.Dodaj(Form2.instance.artyDod);
+            arty = Form2.instance.arty;
+            pierwszyCzytany = arty.head;
             ZmianaText();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             try
-            {
-                pierwszyCzytany = pierwszyCzytany.next.next.next.next.next;
+            {  
+                for (int i = 0; i < 5; i++) {
+                    pierwszyCzytany = pierwszyCzytany.next; }
             }
-            catch (System.NullReferenceException)
+            catch (System.NullReferenceException )
             {
                 button4.Visible = false;
                 button4.Enabled = false;
@@ -246,7 +206,7 @@ namespace Symulator_sklepu
                 pierwszyCzytany = arty.tail;
                 return;
             }
-            else if (pierwszyCzytany.next == null)
+            else if (pierwszyCzytany == arty.head || pierwszyCzytany.next == null || pierwszyCzytany.next.next == null || pierwszyCzytany.next.next.next == null || pierwszyCzytany.next.next.next.next == null)
             {
                 button4.Visible = false;
                 button4.Enabled = false;
@@ -266,6 +226,8 @@ namespace Symulator_sklepu
             }
             catch (System.NullReferenceException)
             {
+                button5.Visible = false;
+                button5.Enabled = false;
                 pierwszyCzytany = arty.head;
             }
             if (pierwszyCzytany == null)
@@ -275,7 +237,7 @@ namespace Symulator_sklepu
                 pierwszyCzytany = arty.head;
                 return;
             }
-            else if (pierwszyCzytany.prev == null)
+            else if (pierwszyCzytany==arty.head||pierwszyCzytany.prev == null|| pierwszyCzytany.prev.prev == null || pierwszyCzytany.prev.prev.prev == null || pierwszyCzytany.prev.prev.prev.prev == null)
             {
                 button5.Visible = false;
                 button5.Enabled = false;
@@ -295,46 +257,60 @@ namespace Symulator_sklepu
             {
                 button6.Visible = false;
             }
-            
+
 
         }
         private void button7_Click(object sender, EventArgs e)
         {
-           
-                pierwszyCzytany.next.ilosc--;
-                ilosc1.Text = pierwszyCzytany.next.ilosc.ToString();
-                if (pierwszyCzytany.next.ilosc == 0)
-                {
-                    button7.Visible = false;
-                }
-           
-            
+
+            pierwszyCzytany.next.ilosc--;
+            ilosc2.Text = pierwszyCzytany.next.ilosc.ToString();
+            if (pierwszyCzytany.next.ilosc == 0)
+            {
+                button7.Visible = false;
+            }
+
+
 
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            
-                pierwszyCzytany.next.next.ilosc--;
-                ilosc1.Text = pierwszyCzytany.next.next.ilosc.ToString();
-                if (pierwszyCzytany.next.next.ilosc == 0)
-                {
-                    button8.Visible = false;
-                }
-            
-            
+
+            pierwszyCzytany.next.next.ilosc--;
+            ilosc3.Text = pierwszyCzytany.next.next.ilosc.ToString();
+            if (pierwszyCzytany.next.next.ilosc == 0)
+            {
+                button8.Visible = false;
+            }
+
+
 
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            
-                pierwszyCzytany.next.next.next.ilosc--;
-                ilosc1.Text = pierwszyCzytany.next.next.next.ilosc.ToString();
-                if (pierwszyCzytany.next.next.next.ilosc == 0)
-                {
-                    button9.Visible = false;
-                }
-            
+
+            pierwszyCzytany.next.next.next.ilosc--;
+            ilosc4.Text = pierwszyCzytany.next.next.next.ilosc.ToString();
+            if (pierwszyCzytany.next.next.next.ilosc == 0)
+            {
+                button9.Visible = false;
+            }
+
 
         }
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            pierwszyCzytany.next.next.next.next.ilosc--;
+            ilosc5.Text = pierwszyCzytany.next.next.next.next.ilosc.ToString();
+            if (pierwszyCzytany.next.next.next.next.ilosc == 0)
+            {
+                button9.Visible = false;
+            }
+
+
+        }
+
+        
     }
 }

@@ -16,7 +16,7 @@ namespace Symulator_sklepu
             this.numOfProd = 0;
         }
 
-        public ProductModel(string name, string description, int price, int numOfProd)
+        public ProductModel(string name, string description, double price, int numOfProd)
         {
             Name = name;
             Description = description;
@@ -26,7 +26,7 @@ namespace Symulator_sklepu
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int numOfProd {  get; set; }
         
     }

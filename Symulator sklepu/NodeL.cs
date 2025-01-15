@@ -13,12 +13,15 @@ namespace Symulator_sklepu
         public NodeL prev { get; set; }
         public int ilosc { get; set; }
         public string nazwa { get; set; }
-        public int cena_w_gr { get; set; }
+        
+        public double cena_w_gr { get; set; }
         public NodeL(string nazwa,double cena,int liczba)
-        {
-            this.cena_w_gr = (int)cena*100;
+        {          
+            this.cena_w_gr = (int)(cena * 100);
             this.nazwa = nazwa;
             this.ilosc = liczba;
+            this.next = null;
+            this.prev = null;
         }
 
         public NodeL()
@@ -29,8 +32,12 @@ namespace Symulator_sklepu
         }
 
         public String PrintCena()
-        {
-            return ((double)(cena_w_gr/100)).ToString();
+        {   
+            double zwrotka=cena_w_gr;
+            zwrotka /= 100;
+            
+            return zwrotka.ToString();
+            
         }
         
     }

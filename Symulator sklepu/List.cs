@@ -26,7 +26,7 @@ namespace Symulator_sklepu {
         }
         public void AddFirst(string nazwa, double cena, int liczba)
         {
-            var nowy = new NodeL(nazwa, (int)(cena), liczba);
+            var nowy = new NodeL(nazwa, cena, liczba);
             nowy.next = this.head;
             if (this.count > 0)
             {
@@ -37,12 +37,13 @@ namespace Symulator_sklepu {
                 this.tail = nowy;
             }
             this.head = nowy;
+            nowy.prev = null;
 
             count++;
         }
         public void AddLast(string nazwa, double cena, int liczba)
         {
-            var nowy = new NodeL(nazwa, (int)(cena), liczba);
+            var nowy = new NodeL(nazwa, cena, liczba);
             nowy.prev = this.tail;
             if (this.count > 0)
             {
@@ -53,6 +54,7 @@ namespace Symulator_sklepu {
                 this.head = nowy;
             }
             this.tail = nowy;
+            nowy.next = null;
 
             count++;
         }

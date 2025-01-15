@@ -30,12 +30,12 @@ namespace Symulator_sklepu
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            poleNaNazwe = new TextBox();
+            poleNaCene = new TextBox();
+            poleNaIlosc = new TextBox();
+            nazwa = new Label();
+            cena = new Label();
+            ilosc = new Label();
             cena5 = new Label();
             cena4 = new Label();
             cena3 = new Label();
@@ -46,75 +46,87 @@ namespace Symulator_sklepu
             nazwa3 = new Label();
             nazwa2 = new Label();
             nazwa1 = new Label();
+            Utworz = new Button();
+            pierwszyPlus = new Button();
+            drugiPlus = new Button();
+            trzeciPlus = new Button();
+            czwartyPlus = new Button();
+            piatyPlus = new Button();
+            pierwszyMinus = new Button();
+            drugiMinus = new Button();
+            trzeciMinus = new Button();
+            czwartyMinus = new Button();
+            piatyMinus = new Button();
+            ilosc1 = new Label();
+            ilosc2 = new Label();
+            ilosc3 = new Label();
+            ilosc4 = new Label();
+            ilosc5 = new Label();
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            button11 = new Button();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // poleNaNazwe
             // 
-            textBox1.Location = new Point(196, 89);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
+            poleNaNazwe.BackColor = Color.Gainsboro;
+            poleNaNazwe.BorderStyle = BorderStyle.None;
+            poleNaNazwe.Location = new Point(22, 89);
+            poleNaNazwe.Name = "poleNaNazwe";
+            poleNaNazwe.Size = new Size(245, 16);
+            poleNaNazwe.TabIndex = 0;
             // 
-            // textBox2
+            // poleNaCene
             // 
-            textBox2.Location = new Point(317, 89);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 1;
+            poleNaCene.BackColor = Color.Gainsboro;
+            poleNaCene.BorderStyle = BorderStyle.None;
+            poleNaCene.Location = new Point(317, 89);
+            poleNaCene.Name = "poleNaCene";
+            poleNaCene.Size = new Size(100, 16);
+            poleNaCene.TabIndex = 1;
             // 
-            // textBox3
+            // poleNaIlosc
             // 
-            textBox3.Location = new Point(434, 89);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 2;
+            poleNaIlosc.BackColor = Color.Gainsboro;
+            poleNaIlosc.BorderStyle = BorderStyle.None;
+            poleNaIlosc.Location = new Point(434, 89);
+            poleNaIlosc.Name = "poleNaIlosc";
+            poleNaIlosc.Size = new Size(100, 16);
+            poleNaIlosc.TabIndex = 2;
             // 
-            // label1
+            // nazwa
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(233, 71);
-            label1.Name = "label1";
-            label1.Size = new Size(42, 15);
-            label1.TabIndex = 3;
-            label1.Text = "Nazwa";
+            nazwa.AutoSize = true;
+            nazwa.ForeColor = Color.AntiqueWhite;
+            nazwa.Location = new Point(121, 71);
+            nazwa.Name = "nazwa";
+            nazwa.Size = new Size(42, 15);
+            nazwa.TabIndex = 3;
+            nazwa.Text = "Nazwa";
             // 
-            // label2
+            // cena
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(350, 71);
-            label2.Name = "label2";
-            label2.Size = new Size(34, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Cena";
+            cena.AutoSize = true;
+            cena.ForeColor = Color.AntiqueWhite;
+            cena.Location = new Point(350, 71);
+            cena.Name = "cena";
+            cena.Size = new Size(34, 15);
+            cena.TabIndex = 4;
+            cena.Text = "Cena";
             // 
-            // label3
+            // ilosc
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(469, 71);
-            label3.Name = "label3";
-            label3.Size = new Size(31, 15);
-            label3.TabIndex = 5;
-            label3.Text = "Ilość";
+            ilosc.AutoSize = true;
+            ilosc.ForeColor = Color.AntiqueWhite;
+            ilosc.Location = new Point(469, 71);
+            ilosc.Name = "ilosc";
+            ilosc.Size = new Size(31, 15);
+            ilosc.TabIndex = 5;
+            ilosc.Text = "Ilość";
             // 
             // cena5
             // 
             cena5.AutoSize = true;
+            cena5.ForeColor = Color.AntiqueWhite;
             cena5.Location = new Point(350, 273);
             cena5.Name = "cena5";
             cena5.Size = new Size(38, 15);
@@ -124,6 +136,7 @@ namespace Symulator_sklepu
             // cena4
             // 
             cena4.AutoSize = true;
+            cena4.ForeColor = Color.AntiqueWhite;
             cena4.Location = new Point(350, 242);
             cena4.Name = "cena4";
             cena4.Size = new Size(38, 15);
@@ -133,6 +146,7 @@ namespace Symulator_sklepu
             // cena3
             // 
             cena3.AutoSize = true;
+            cena3.ForeColor = Color.AntiqueWhite;
             cena3.Location = new Point(350, 214);
             cena3.Name = "cena3";
             cena3.Size = new Size(38, 15);
@@ -142,6 +156,7 @@ namespace Symulator_sklepu
             // cena2
             // 
             cena2.AutoSize = true;
+            cena2.ForeColor = Color.AntiqueWhite;
             cena2.Location = new Point(350, 183);
             cena2.Name = "cena2";
             cena2.Size = new Size(38, 15);
@@ -151,6 +166,7 @@ namespace Symulator_sklepu
             // cena1
             // 
             cena1.AutoSize = true;
+            cena1.ForeColor = Color.AntiqueWhite;
             cena1.Location = new Point(350, 155);
             cena1.Name = "cena1";
             cena1.Size = new Size(38, 15);
@@ -160,7 +176,8 @@ namespace Symulator_sklepu
             // nazwa5
             // 
             nazwa5.AutoSize = true;
-            nazwa5.Location = new Point(193, 276);
+            nazwa5.ForeColor = Color.AntiqueWhite;
+            nazwa5.Location = new Point(22, 273);
             nazwa5.Name = "nazwa5";
             nazwa5.Size = new Size(38, 15);
             nazwa5.TabIndex = 16;
@@ -169,7 +186,8 @@ namespace Symulator_sklepu
             // nazwa4
             // 
             nazwa4.AutoSize = true;
-            nazwa4.Location = new Point(193, 245);
+            nazwa4.ForeColor = Color.AntiqueWhite;
+            nazwa4.Location = new Point(22, 242);
             nazwa4.Name = "nazwa4";
             nazwa4.Size = new Size(0, 15);
             nazwa4.TabIndex = 15;
@@ -177,7 +195,8 @@ namespace Symulator_sklepu
             // nazwa3
             // 
             nazwa3.AutoSize = true;
-            nazwa3.Location = new Point(193, 217);
+            nazwa3.ForeColor = Color.AntiqueWhite;
+            nazwa3.Location = new Point(22, 214);
             nazwa3.Name = "nazwa3";
             nazwa3.Size = new Size(0, 15);
             nazwa3.TabIndex = 14;
@@ -185,7 +204,8 @@ namespace Symulator_sklepu
             // nazwa2
             // 
             nazwa2.AutoSize = true;
-            nazwa2.Location = new Point(193, 186);
+            nazwa2.ForeColor = Color.AntiqueWhite;
+            nazwa2.Location = new Point(22, 183);
             nazwa2.Name = "nazwa2";
             nazwa2.Size = new Size(0, 15);
             nazwa2.TabIndex = 13;
@@ -193,177 +213,255 @@ namespace Symulator_sklepu
             // nazwa1
             // 
             nazwa1.AutoSize = true;
-            nazwa1.Location = new Point(193, 158);
+            nazwa1.ForeColor = Color.AntiqueWhite;
+            nazwa1.Location = new Point(22, 155);
             nazwa1.Name = "nazwa1";
             nazwa1.Size = new Size(0, 15);
             nazwa1.TabIndex = 12;
             // 
+            // Utworz
+            // 
+            Utworz.BackColor = Color.DarkGray;
+            Utworz.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            Utworz.FlatStyle = FlatStyle.Flat;
+            Utworz.Location = new Point(553, 71);
+            Utworz.Name = "Utworz";
+            Utworz.Size = new Size(75, 57);
+            Utworz.TabIndex = 22;
+            Utworz.Text = "dodaj produkt!";
+            Utworz.UseVisualStyleBackColor = false;
+            Utworz.Click += button1_Click;
+            // 
+            // pierwszyPlus
+            // 
+            pierwszyPlus.BackColor = Color.DarkGray;
+            pierwszyPlus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            pierwszyPlus.FlatStyle = FlatStyle.Flat;
+            pierwszyPlus.Location = new Point(529, 151);
+            pierwszyPlus.Name = "pierwszyPlus";
+            pierwszyPlus.Size = new Size(18, 23);
+            pierwszyPlus.TabIndex = 23;
+            pierwszyPlus.Text = "+";
+            pierwszyPlus.UseVisualStyleBackColor = false;
+            pierwszyPlus.Click += button2_Click;
+            // 
+            // drugiPlus
+            // 
+            drugiPlus.BackColor = Color.DarkGray;
+            drugiPlus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            drugiPlus.FlatStyle = FlatStyle.Flat;
+            drugiPlus.Location = new Point(529, 179);
+            drugiPlus.Name = "drugiPlus";
+            drugiPlus.Size = new Size(18, 23);
+            drugiPlus.TabIndex = 24;
+            drugiPlus.Text = "+";
+            drugiPlus.UseVisualStyleBackColor = false;
+            drugiPlus.Click += button3_Click;
+            // 
+            // trzeciPlus
+            // 
+            trzeciPlus.BackColor = Color.DarkGray;
+            trzeciPlus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            trzeciPlus.FlatStyle = FlatStyle.Flat;
+            trzeciPlus.Location = new Point(529, 210);
+            trzeciPlus.Name = "trzeciPlus";
+            trzeciPlus.Size = new Size(18, 23);
+            trzeciPlus.TabIndex = 25;
+            trzeciPlus.Text = "+";
+            trzeciPlus.UseVisualStyleBackColor = false;
+            trzeciPlus.Click += button4_Click;
+            // 
+            // czwartyPlus
+            // 
+            czwartyPlus.BackColor = Color.DarkGray;
+            czwartyPlus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            czwartyPlus.FlatStyle = FlatStyle.Flat;
+            czwartyPlus.Location = new Point(529, 238);
+            czwartyPlus.Name = "czwartyPlus";
+            czwartyPlus.Size = new Size(18, 23);
+            czwartyPlus.TabIndex = 26;
+            czwartyPlus.Text = "+";
+            czwartyPlus.UseVisualStyleBackColor = false;
+            czwartyPlus.Click += button5_Click;
+            // 
+            // piatyPlus
+            // 
+            piatyPlus.BackColor = Color.DarkGray;
+            piatyPlus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            piatyPlus.FlatStyle = FlatStyle.Flat;
+            piatyPlus.Location = new Point(529, 269);
+            piatyPlus.Name = "piatyPlus";
+            piatyPlus.Size = new Size(18, 23);
+            piatyPlus.TabIndex = 27;
+            piatyPlus.Text = "+";
+            piatyPlus.UseVisualStyleBackColor = false;
+            piatyPlus.Click += button6_Click;
+            // 
+            // pierwszyMinus
+            // 
+            pierwszyMinus.BackColor = Color.DarkGray;
+            pierwszyMinus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            pierwszyMinus.FlatStyle = FlatStyle.Flat;
+            pierwszyMinus.Location = new Point(553, 151);
+            pierwszyMinus.Name = "pierwszyMinus";
+            pierwszyMinus.Size = new Size(18, 23);
+            pierwszyMinus.TabIndex = 32;
+            pierwszyMinus.Text = "-";
+            pierwszyMinus.UseVisualStyleBackColor = false;
+            pierwszyMinus.Click += button7_Click;
+            // 
+            // drugiMinus
+            // 
+            drugiMinus.BackColor = Color.DarkGray;
+            drugiMinus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            drugiMinus.FlatStyle = FlatStyle.Flat;
+            drugiMinus.Location = new Point(553, 179);
+            drugiMinus.Name = "drugiMinus";
+            drugiMinus.Size = new Size(18, 23);
+            drugiMinus.TabIndex = 31;
+            drugiMinus.Text = "-";
+            drugiMinus.UseVisualStyleBackColor = false;
+            drugiMinus.Click += button8_Click;
+            // 
+            // trzeciMinus
+            // 
+            trzeciMinus.BackColor = Color.DarkGray;
+            trzeciMinus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            trzeciMinus.FlatStyle = FlatStyle.Flat;
+            trzeciMinus.Location = new Point(553, 210);
+            trzeciMinus.Name = "trzeciMinus";
+            trzeciMinus.Size = new Size(18, 23);
+            trzeciMinus.TabIndex = 30;
+            trzeciMinus.Text = "-";
+            trzeciMinus.UseVisualStyleBackColor = false;
+            trzeciMinus.Click += button9_Click;
+            // 
+            // czwartyMinus
+            // 
+            czwartyMinus.BackColor = Color.DarkGray;
+            czwartyMinus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            czwartyMinus.FlatStyle = FlatStyle.Flat;
+            czwartyMinus.Location = new Point(553, 237);
+            czwartyMinus.Name = "czwartyMinus";
+            czwartyMinus.Size = new Size(18, 23);
+            czwartyMinus.TabIndex = 29;
+            czwartyMinus.Text = "-";
+            czwartyMinus.UseVisualStyleBackColor = false;
+            czwartyMinus.Click += button10_Click;
+            // 
+            // piatyMinus
+            // 
+            piatyMinus.BackColor = Color.DarkGray;
+            piatyMinus.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            piatyMinus.FlatStyle = FlatStyle.Flat;
+            piatyMinus.Location = new Point(553, 269);
+            piatyMinus.Name = "piatyMinus";
+            piatyMinus.Size = new Size(18, 23);
+            piatyMinus.TabIndex = 28;
+            piatyMinus.Text = "-";
+            piatyMinus.UseVisualStyleBackColor = false;
+            piatyMinus.Click += button11_Click;
+            // 
+            // ilosc1
+            // 
+            ilosc1.AutoSize = true;
+            ilosc1.ForeColor = Color.AntiqueWhite;
+            ilosc1.Location = new Point(469, 155);
+            ilosc1.Name = "ilosc1";
+            ilosc1.Size = new Size(37, 15);
+            ilosc1.TabIndex = 37;
+            ilosc1.Text = "ilosc1";
+            // 
+            // ilosc2
+            // 
+            ilosc2.AutoSize = true;
+            ilosc2.ForeColor = Color.AntiqueWhite;
+            ilosc2.Location = new Point(469, 183);
+            ilosc2.Name = "ilosc2";
+            ilosc2.Size = new Size(37, 15);
+            ilosc2.TabIndex = 36;
+            ilosc2.Text = "ilosc2";
+            // 
+            // ilosc3
+            // 
+            ilosc3.AutoSize = true;
+            ilosc3.ForeColor = Color.AntiqueWhite;
+            ilosc3.Location = new Point(469, 213);
+            ilosc3.Name = "ilosc3";
+            ilosc3.Size = new Size(37, 15);
+            ilosc3.TabIndex = 35;
+            ilosc3.Text = "ilosc3";
+            // 
+            // ilosc4
+            // 
+            ilosc4.AutoSize = true;
+            ilosc4.ForeColor = Color.AntiqueWhite;
+            ilosc4.Location = new Point(469, 241);
+            ilosc4.Name = "ilosc4";
+            ilosc4.Size = new Size(37, 15);
+            ilosc4.TabIndex = 34;
+            ilosc4.Text = "ilosc4";
+            // 
+            // ilosc5
+            // 
+            ilosc5.AutoSize = true;
+            ilosc5.ForeColor = Color.AntiqueWhite;
+            ilosc5.Location = new Point(469, 273);
+            ilosc5.Name = "ilosc5";
+            ilosc5.Size = new Size(37, 15);
+            ilosc5.TabIndex = 33;
+            ilosc5.Text = "ilosc5";
+            // 
             // button1
             // 
-            button1.Location = new Point(553, 71);
+            button1.BackColor = Color.DarkGray;
+            button1.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(317, 338);
             button1.Name = "button1";
-            button1.Size = new Size(75, 57);
-            button1.TabIndex = 22;
-            button1.Text = "dodaj produkt!";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Size = new Size(18, 23);
+            button1.TabIndex = 38;
+            button1.Text = "<";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // button2
             // 
-            button2.Location = new Point(529, 154);
+            button2.BackColor = Color.DarkGray;
+            button2.FlatAppearance.BorderColor = Color.LightSteelBlue;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(399, 338);
             button2.Name = "button2";
             button2.Size = new Size(18, 23);
-            button2.TabIndex = 23;
-            button2.Text = "+";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(529, 185);
-            button3.Name = "button3";
-            button3.Size = new Size(18, 23);
-            button3.TabIndex = 24;
-            button3.Text = "+";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(529, 212);
-            button4.Name = "button4";
-            button4.Size = new Size(18, 23);
-            button4.TabIndex = 25;
-            button4.Text = "+";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(529, 240);
-            button5.Name = "button5";
-            button5.Size = new Size(18, 23);
-            button5.TabIndex = 26;
-            button5.Text = "+";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(529, 267);
-            button6.Name = "button6";
-            button6.Size = new Size(18, 23);
-            button6.TabIndex = 27;
-            button6.Text = "+";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(553, 267);
-            button7.Name = "button7";
-            button7.Size = new Size(18, 23);
-            button7.TabIndex = 32;
-            button7.Text = "-";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(553, 240);
-            button8.Name = "button8";
-            button8.Size = new Size(18, 23);
-            button8.TabIndex = 31;
-            button8.Text = "-";
-            button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Location = new Point(553, 212);
-            button9.Name = "button9";
-            button9.Size = new Size(18, 23);
-            button9.TabIndex = 30;
-            button9.Text = "-";
-            button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            button10.Location = new Point(553, 185);
-            button10.Name = "button10";
-            button10.Size = new Size(18, 23);
-            button10.TabIndex = 29;
-            button10.Text = "-";
-            button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            button11.Location = new Point(553, 154);
-            button11.Name = "button11";
-            button11.Size = new Size(18, 23);
-            button11.TabIndex = 28;
-            button11.Text = "-";
-            button11.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(469, 272);
-            label4.Name = "label4";
-            label4.Size = new Size(37, 15);
-            label4.TabIndex = 37;
-            label4.Text = "ilosc1";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(469, 241);
-            label5.Name = "label5";
-            label5.Size = new Size(37, 15);
-            label5.TabIndex = 36;
-            label5.Text = "ilosc2";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(469, 213);
-            label6.Name = "label6";
-            label6.Size = new Size(37, 15);
-            label6.TabIndex = 35;
-            label6.Text = "ilosc3";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(469, 182);
-            label7.Name = "label7";
-            label7.Size = new Size(37, 15);
-            label7.TabIndex = 34;
-            label7.Text = "ilosc4";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(469, 154);
-            label8.Name = "label8";
-            label8.Size = new Size(37, 15);
-            label8.TabIndex = 33;
-            label8.Text = "ilosc5";
+            button2.TabIndex = 39;
+            button2.Text = ">";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GrayText;
             ClientSize = new Size(800, 450);
-            Controls.Add(label4);
-            Controls.Add(label5);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(label8);
-            Controls.Add(button7);
-            Controls.Add(button8);
-            Controls.Add(button9);
-            Controls.Add(button10);
-            Controls.Add(button11);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
+            Controls.Add(ilosc1);
+            Controls.Add(ilosc2);
+            Controls.Add(ilosc3);
+            Controls.Add(ilosc4);
+            Controls.Add(ilosc5);
+            Controls.Add(pierwszyMinus);
+            Controls.Add(drugiMinus);
+            Controls.Add(trzeciMinus);
+            Controls.Add(czwartyMinus);
+            Controls.Add(piatyMinus);
+            Controls.Add(piatyPlus);
+            Controls.Add(czwartyPlus);
+            Controls.Add(trzeciPlus);
+            Controls.Add(drugiPlus);
+            Controls.Add(pierwszyPlus);
+            Controls.Add(Utworz);
             Controls.Add(cena5);
             Controls.Add(cena4);
             Controls.Add(cena3);
@@ -374,12 +472,12 @@ namespace Symulator_sklepu
             Controls.Add(nazwa3);
             Controls.Add(nazwa2);
             Controls.Add(nazwa1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(ilosc);
+            Controls.Add(cena);
+            Controls.Add(nazwa);
+            Controls.Add(poleNaIlosc);
+            Controls.Add(poleNaCene);
+            Controls.Add(poleNaNazwe);
             Name = "Form2";
             Text = "Form2";
             Load += Form2_Load;
@@ -394,12 +492,12 @@ namespace Symulator_sklepu
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private TextBox poleNaNazwe;
+        private TextBox poleNaCene;
+        private TextBox poleNaIlosc;
+        private Label nazwa;
+        private Label cena;
+        private Label ilosc;
         private Label cena5;
         private Label cena4;
         private Label cena3;
@@ -410,21 +508,23 @@ namespace Symulator_sklepu
         private Label nazwa3;
         private Label nazwa2;
         private Label nazwa1;
+        private Button Utworz;
+        private Button pierwszyPlus;
+        private Button drugiPlus;
+        private Button trzeciPlus;
+        private Button czwartyPlus;
+        private Button piatyPlus;
+        private Button pierwszyMinus;
+        private Button drugiMinus;
+        private Button trzeciMinus;
+        private Button czwartyMinus;
+        private Button piatyMinus;
+        private Label ilosc1;
+        private Label ilosc2;
+        private Label ilosc3;
+        private Label ilosc4;
+        private Label ilosc5;
         private Button button1;
         private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private Button button10;
-        private Button button11;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
     }
 }
