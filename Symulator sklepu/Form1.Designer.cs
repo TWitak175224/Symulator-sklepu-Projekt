@@ -40,11 +40,11 @@
             cena3 = new Label();
             cena4 = new Label();
             cena5 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
+            ilosc1 = new Label();
+            ilosc2 = new Label();
+            ilosc3 = new Label();
+            ilosc4 = new Label();
+            ilosc5 = new Label();
             button3 = new Button();
             button4 = new Button();
             SuspendLayout();
@@ -155,50 +155,50 @@
             cena5.TabIndex = 11;
             cena5.Text = "cena5";
             // 
-            // label4
+            // ilosc1
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(308, 270);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 42;
-            label4.Text = "label4";
+            ilosc1.AutoSize = true;
+            ilosc1.Location = new Point(308, 152);
+            ilosc1.Name = "ilosc1";
+            ilosc1.Size = new Size(37, 15);
+            ilosc1.TabIndex = 42;
+            ilosc1.Text = "ilosc1";
             // 
-            // label5
+            // ilosc2
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(308, 239);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 41;
-            label5.Text = "label5";
+            ilosc2.AutoSize = true;
+            ilosc2.Location = new Point(308, 180);
+            ilosc2.Name = "ilosc2";
+            ilosc2.Size = new Size(37, 15);
+            ilosc2.TabIndex = 41;
+            ilosc2.Text = "ilosc2";
             // 
-            // label6
+            // ilosc3
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(308, 211);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 40;
-            label6.Text = "label6";
+            ilosc3.AutoSize = true;
+            ilosc3.Location = new Point(308, 211);
+            ilosc3.Name = "ilosc3";
+            ilosc3.Size = new Size(37, 15);
+            ilosc3.TabIndex = 40;
+            ilosc3.Text = "ilosc3";
             // 
-            // label7
+            // ilosc4
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(308, 180);
-            label7.Name = "label7";
-            label7.Size = new Size(38, 15);
-            label7.TabIndex = 39;
-            label7.Text = "label7";
+            ilosc4.AutoSize = true;
+            ilosc4.Location = new Point(308, 239);
+            ilosc4.Name = "ilosc4";
+            ilosc4.Size = new Size(37, 15);
+            ilosc4.TabIndex = 39;
+            ilosc4.Text = "ilosc4";
             // 
-            // label8
+            // ilosc5
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(308, 152);
-            label8.Name = "label8";
-            label8.Size = new Size(38, 15);
-            label8.TabIndex = 38;
-            label8.Text = "label8";
+            ilosc5.AutoSize = true;
+            ilosc5.Location = new Point(308, 270);
+            ilosc5.Name = "ilosc5";
+            ilosc5.Size = new Size(37, 15);
+            ilosc5.TabIndex = 38;
+            ilosc5.Text = "ilosc5";
             // 
             // button3
             // 
@@ -228,11 +228,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button4);
             Controls.Add(button3);
-            Controls.Add(label4);
-            Controls.Add(label5);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(label8);
+            Controls.Add(ilosc1);
+            Controls.Add(ilosc2);
+            Controls.Add(ilosc3);
+            Controls.Add(ilosc4);
+            Controls.Add(ilosc5);
             Controls.Add(cena5);
             Controls.Add(cena4);
             Controls.Add(cena3);
@@ -265,11 +265,11 @@
         private Label cena3;
         private Label cena4;
         private Label cena5;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
+        private Label ilosc1;
+        private Label ilosc2;
+        private Label ilosc3;
+        private Label ilosc4;
+        private Label ilosc5;
         private Button button3;
         private Button button4;
     }

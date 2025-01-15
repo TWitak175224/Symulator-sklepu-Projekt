@@ -206,6 +206,7 @@ namespace Symulator_sklepu
             button1.TabIndex = 22;
             button1.Text = "dodaj produkt!";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -302,45 +303,45 @@ namespace Symulator_sklepu
             label4.AutoSize = true;
             label4.Location = new Point(469, 272);
             label4.Name = "label4";
-            label4.Size = new Size(38, 15);
+            label4.Size = new Size(37, 15);
             label4.TabIndex = 37;
-            label4.Text = "label4";
+            label4.Text = "ilosc1";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(469, 241);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(37, 15);
             label5.TabIndex = 36;
-            label5.Text = "label5";
+            label5.Text = "ilosc2";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(469, 213);
             label6.Name = "label6";
-            label6.Size = new Size(38, 15);
+            label6.Size = new Size(37, 15);
             label6.TabIndex = 35;
-            label6.Text = "label6";
+            label6.Text = "ilosc3";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Location = new Point(469, 182);
             label7.Name = "label7";
-            label7.Size = new Size(38, 15);
+            label7.Size = new Size(37, 15);
             label7.TabIndex = 34;
-            label7.Text = "label7";
+            label7.Text = "ilosc4";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Location = new Point(469, 154);
             label8.Name = "label8";
-            label8.Size = new Size(38, 15);
+            label8.Size = new Size(37, 15);
             label8.TabIndex = 33;
-            label8.Text = "label8";
+            label8.Text = "ilosc5";
             // 
             // Form2
             // 
@@ -381,8 +382,14 @@ namespace Symulator_sklepu
             Controls.Add(textBox1);
             Name = "Form2";
             Text = "Form2";
+            Load += Form2_Load;
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            
         }
 
         #endregion

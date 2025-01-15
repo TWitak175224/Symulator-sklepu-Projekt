@@ -87,7 +87,14 @@ namespace Symulator_sklepu {
             }
 
         }
-
+        public void Dodaj(List l)
+        {
+            NodeL look = l.head;
+            for (int i = 0; i < l.count; i++)
+            {
+                this.AddLast(look.nazwa, look.cena_w_gr, look.ilosc);
+            }
+        }
 
 
 

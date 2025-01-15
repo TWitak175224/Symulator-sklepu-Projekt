@@ -13,69 +13,65 @@ namespace Symulator_sklepu
 {
     public partial class Form2 : Form
     {
+        public static Form2 instance;
         public List arty = new List();
+        public List artyDod = new List();
         private NodeL pierwszyCzytany = new NodeL();
         int alfab = 0, cen = 0;
         public Form2()
         {
+            instance = this;
             InitializeComponent();
-            czytanie();
+           // czytanie();
 
-
+            arty = Form1.instance.arty;
             pierwszyCzytany = arty.head;
 
 
         }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            zamykanie();
-        }
-        private void zamykanie()
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(ProductModel[]));
-            ProductModel[] tablica = new ProductModel[arty.count];
-            for (int i = 0; i < arty.count; i++)
-            {
-                NodeL produkt = arty.head;
-                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr, produkt.ilosc);
-                produkt = produkt.next;
-            }
-            
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuły.xml", FileMode.Create, FileAccess.Write))
-            {
-                serializer.Serialize(fs, tablica);
-                MessageBox.Show("Created");
-            }
-            serializer = new XmlSerializer(typeof(uint));
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Create, FileAccess.Write))
-            {
-                serializer.Serialize(fs, arty.count);
-            }
-        }
+        
         public void czytanie()
         {
             String? ile = "";
             uint i = 0;
-                XmlSerializer serializer = new XmlSerializer(typeof(uint));
-            using(FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Open, FileAccess.Read))
+            XmlSerializer serializer = new XmlSerializer(typeof(String));
+            try
             {
-                ile = serializer.Deserialize(fs) as String;
-                if (ile != null)
+                using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Open, FileAccess.Read))
                 {
-                    i = uint.Parse(ile);
-                }
+                    ile = serializer.Deserialize(fs) as String;
+                    if (ile != null)
+                    {
+                        i = uint.Parse(ile);
+                    }
 
+                }
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                return;
             }
             ProductModel[]? tablica = new ProductModel[i];
             serializer = new XmlSerializer(typeof(ProductModel[]));
             using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuły.xml", FileMode.Open, FileAccess.Read))
             {
-                tablica = serializer.Deserialize(fs) as ProductModel[] ;
+                tablica = serializer.Deserialize(fs) as ProductModel[];
             }
-            for (int j = 0; j < i; j++) {
-                arty.AddLast(tablica[j].Name, tablica[j].Price, tablica[j].numOfProd);
+            for (uint j = 0; j < i; j++)
+            {
+                this.arty.AddFirst(tablica[j].Name, tablica[j].Price, tablica[j].numOfProd);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            artyDod.AddFirst(textBox1.Text, double.Parse(textBox2.Text), int.Parse(textBox3.Text));
+            MessageBox.Show("utworzono produkt");
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            textBox3.Text = string.Empty;
+        }
+
+        
     }
 }
