@@ -28,13 +28,15 @@ namespace Symulator_sklepu
             InitializeComponent();
             instance = this;
             //czytanie();
-            String[] nazwy = { "a", "b", "c", "d", "e","f","g","h","i","j","k" };
-            int[] ceny = { 10,9,8,7,6,5, 4, 3, 2, 1,0 };
+            String[] nazwy = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k" };
+            int[] ceny = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
             for (int i = 0; i < nazwy.Length; i++)
             {
                 arty.AddLast(nazwy[i], ceny[i], 21);
             }
             pierwszyCzytany = arty.head;
+            button5.Visible = false;
+            button5.Enabled = false;
 
             ZmianaText();
         }
@@ -139,7 +141,7 @@ namespace Symulator_sklepu
             {
                 System.Windows.Forms.Label[] labelki_nazw = { nazwa1, nazwa2, nazwa3, nazwa4, nazwa5 };
                 System.Windows.Forms.Label[] labelki_cen = { cena1, cena2, cena3, cena4, cena5 };
-                System.Windows.Forms.Label[] labelki_ilosci = {ilosc1,ilosc2,ilosc3,ilosc4,ilosc5 };
+                System.Windows.Forms.Label[] labelki_ilosci = { ilosc1, ilosc2, ilosc3, ilosc4, ilosc5 };
                 NodeL czytany = pierwszyCzytany;
                 for (int i = 0; i < SprawdzIleDoWyswietlenia(); i++)
                 {
@@ -149,9 +151,8 @@ namespace Symulator_sklepu
                         labelki_cen[i].Text = null;
                         labelki_nazw[i].Text = null;
                         labelki_ilosci[i].Text = null;
-                        button4.Visible = false;
-                        button4.Enabled = false;
                         
+
                     }
                     else
                     {
@@ -161,7 +162,7 @@ namespace Symulator_sklepu
                         czytany = czytany.next;
                     }
 
-            }
+                }
             }
         }
 
@@ -217,10 +218,34 @@ namespace Symulator_sklepu
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
-                pierwszyCzytany = pierwszyCzytany.next.next.next.next.next;
-                ZmianaText();
-            
+
+            pierwszyCzytany = pierwszyCzytany.next.next.next.next.next;
+            if (pierwszyCzytany.next == null) {
+                button4.Visible = false;
+                button4.Enabled = false;
+
+            }
+            button5.Visible = true;
+            button5.Enabled = true;
+            ZmianaText();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            pierwszyCzytany = pierwszyCzytany.prev.prev.prev.prev.prev;
+            if (pierwszyCzytany.prev == null)
+            {
+                button5.Visible = false;
+                button5.Enabled = false;
+            }
+            else
+            {
+                button4.Visible = true;
+                button4.Enabled = true;
+            }
+            ZmianaText();
         }
     }
 }
