@@ -44,7 +44,7 @@ namespace Symulator_sklepu
         }
         private void zamykanie()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(ProductModel[]));
+            XmlSerializer serializer = new XmlSerializer(typeof(ProductModel[])); //utworzenie serializatora (no aby mógł zczytać)
             ProductModel[] tablica = new ProductModel[arty.count];
             NodeL produkt = arty.head;
             for (int i = 0; i < arty.count; i++)
