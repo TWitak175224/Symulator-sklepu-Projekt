@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProductModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProductModel>
+    <Name>Zestaw Pilników precyzyjnych</Name>
+    <Description />
+    <Price>40</Price>
+    <numOfProd>5</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Narzędzie do przetykania głowicy</Name>
+    <Description />
+    <Price>20</Price>
+    <numOfProd>10000</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Hotend do X1C 0.8</Name>
+    <Description />
+    <Price>99.8</Price>
+    <numOfProd>23</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Hotend do X1C 0.6</Name>
+    <Description />
+    <Price>89.88</Price>
+    <numOfProd>23</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Hotend do X1C 0.4</Name>
+    <Description />
+    <Price>89.8</Price>
+    <numOfProd>30</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Hotend do X1C 0.2</Name>
+    <Description />
+    <Price>89.8</Price>
+    <numOfProd>30</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Filament PLA BL</Name>
+    <Description />
+    <Price>98.48</Price>
+    <numOfProd>300</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Filament PLA  DD</Name>
+    <Description />
+    <Price>25.48</Price>
+    <numOfProd>116</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Filament ABS DD</Name>
+    <Description />
+    <Price>55.65</Price>
+    <numOfProd>114</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Filament ABS BL </Name>
+    <Description />
+    <Price>125.65</Price>
+    <numOfProd>400</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Drukarka X1C</Name>
+    <Description />
+    <Price>7000</Price>
+    <numOfProd>21</numOfProd>
+  </ProductModel>
+  <ProductModel>
+    <Name>Drukarka A1</Name>
+    <Description />
+    <Price>4000</Price>
+    <numOfProd>20</numOfProd>
+  </ProductModel>
+</ArrayOfProductModel>

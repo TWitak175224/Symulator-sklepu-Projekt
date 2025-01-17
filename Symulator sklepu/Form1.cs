@@ -53,14 +53,14 @@ namespace Symulator_sklepu
                 tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr / 100, produkt.ilosc);
                 produkt = produkt.next;
             }
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuly.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream fs = new FileStream(path: Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Artykuly.xml", FileMode.Create, FileAccess.Write))
             {
                 serializer.Serialize(fs, tablica);
 
 
             }
             serializer = new XmlSerializer(typeof(String));
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream fs = new FileStream(path: Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Ile.xml", FileMode.Create, FileAccess.Write))
             {
                 serializer.Serialize(fs, arty.count.ToString());
             }
@@ -73,7 +73,7 @@ namespace Symulator_sklepu
             XmlSerializer serializer = new XmlSerializer(typeof(String));
             try
             {
-                using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Ile.xml", FileMode.Open, FileAccess.Read))
+                using (FileStream fs = new FileStream(path: Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Ile.xml", FileMode.Open, FileAccess.Read))
                 {
                     ile = serializer.Deserialize(fs) as String;
                     if (ile != null)
@@ -89,7 +89,7 @@ namespace Symulator_sklepu
             }
             ProductModel[]? tablica = new ProductModel[i];
             serializer = new XmlSerializer(typeof(ProductModel[]));
-            using (FileStream fs = new FileStream(path: Environment.CurrentDirectory + "\\Artykuly.xml", FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(path: Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Artykuly.xml", FileMode.Open, FileAccess.Read))
             {
                 tablica = serializer.Deserialize(fs) as ProductModel[];
             }
