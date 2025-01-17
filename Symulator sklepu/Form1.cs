@@ -44,25 +44,25 @@ namespace Symulator_sklepu
         }
         private void zamykanie()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(ProductModel[]));
-            ProductModel[] tablica = new ProductModel[arty.count];
-            NodeL produkt = arty.head;
+            XmlSerializer serializer = new XmlSerializer(typeof(ProductModel[])); //utworzenie serializatora (no aby mógł zczytać)
+            ProductModel[] tablica = new ProductModel[arty.count]; //utworzenie tablicy Mockupów produktowych. czyli klasa a'la NodeL, tylko bez prev, next, bo tego nie chcemy zapisać do xmla, bo mogło by się wyjebać.
+            NodeL produkt = arty.head; //ustawienie "indeksu"
             for (int i = 0; i < arty.count; i++)
             {
 
-                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr / 100, produkt.ilosc);
-                produkt = produkt.next;
+                tablica[i] = new ProductModel(produkt.nazwa, "", produkt.cena_w_gr / 100, produkt.ilosc); // przerzucenie z produktu do mockupa
+                produkt = produkt.next; //przejście dalej
             }
             using (FileStream fs = new FileStream(path: Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Artykuly.xml", FileMode.Create, FileAccess.Write))
             {
-                serializer.Serialize(fs, tablica);
+                serializer.Serialize(fs, tablica);//serializacja tablicy
 
 
             }
             serializer = new XmlSerializer(typeof(String));
             using (FileStream fs = new FileStream(path: Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Ile.xml", FileMode.Create, FileAccess.Write))
             {
-                serializer.Serialize(fs, arty.count.ToString());
+                serializer.Serialize(fs, arty.count.ToString());//serializacja ile elementów było
             }
         }
 
